@@ -45,5 +45,11 @@ if ($LASTEXITCODE -ne 0) { throw "gh repo create failed (does the repo already e
 
 Write-Host ""
 Write-Host "Done. Repo URL:" -ForegroundColor Green
-gh repo view --web --no-browser 2>$null | Select-String "^https"
-gh repo view --json url --jq .url
+$repoUrl = (gh repo view --json url --jq .url).Trim()
+Write-Host "  $repoUrl" -ForegroundColor White
+Write-Host ""
+Write-Host "Next: deploy a live preview to share (no clone needed)." -ForegroundColor Cyan
+Write-Host "  1. Go to https://vercel.com/new" -ForegroundColor Gray
+Write-Host "  2. Import '$ghUser/$RepoName' (private repos work after you connect GitHub)" -ForegroundColor Gray
+Write-Host "  3. Click Deploy. No env vars needed." -ForegroundColor Gray
+Write-Host "  4. Send the resulting https://<...>.vercel.app URL to your bro." -ForegroundColor Gray
