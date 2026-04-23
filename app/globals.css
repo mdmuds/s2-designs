@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f8f5ef;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #b85c38;
+    --border: #e5dfd3;
+    --surface: #ffffff;
+    --ink: #141210;
+    --cream: #efeae0;
+  }
+
+  .dark {
+    --bg: #141210;
+    --fg: #efeae0;
+    --muted: #9a958a;
+    --accent: #d97548;
+    --border: #2a2723;
+    --surface: #1c1916;
+    --ink: #141210;
+    --cream: #efeae0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  html,
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  body {
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--cream);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  /* Hide scrollbar for horizontal galleries while keeping scroll */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Off-screen sections skip layout/paint until they approach the viewport.
+     Huge scroll perf win on long pages; no visual change. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-weight: 400;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body), ui-sans-serif, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .hairline {
+    border-color: var(--border);
+  }
+
+  /* Page wrapper used in all internal pages — leaves room under the fixed nav */
+  .page-pad-top {
+    padding-top: 8rem;
+  }
+  @media (min-width: 768px) {
+    .page-pad-top {
+      padding-top: 10rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
