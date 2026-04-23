@@ -4,7 +4,8 @@ export const siteConfig = {
   tagline: "From Drafting to Crafting",
   description:
     "Interior design and architecture studio in Bangalore. Residential, commercial, hospitality, and heritage work — drawn slowly, built carefully.",
-  url: "https://s2designs.co.in",
+  // Live URL. Override at build time via NEXT_PUBLIC_SITE_URL (e.g. for GitHub Pages preview).
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://s2designs.co.in",
   email: "aamir.salar@s2designs.co.in",
   phone: "+91 96297 18765",
   phoneRaw: "+919629718765",

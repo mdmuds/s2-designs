@@ -48,8 +48,10 @@ Write-Host "Done. Repo URL:" -ForegroundColor Green
 $repoUrl = (gh repo view --json url --jq .url).Trim()
 Write-Host "  $repoUrl" -ForegroundColor White
 Write-Host ""
-Write-Host "Next: deploy a live preview to share (no clone needed)." -ForegroundColor Cyan
-Write-Host "  1. Go to https://vercel.com/new" -ForegroundColor Gray
-Write-Host "  2. Import '$ghUser/$RepoName' (private repos work after you connect GitHub)" -ForegroundColor Gray
-Write-Host "  3. Click Deploy. No env vars needed." -ForegroundColor Gray
-Write-Host "  4. Send the resulting https://<...>.vercel.app URL to your bro." -ForegroundColor Gray
+Write-Host "Next: enable GitHub Pages so the site goes live." -ForegroundColor Cyan
+Write-Host "  1. Open: $repoUrl/settings/pages" -ForegroundColor Gray
+Write-Host "  2. Under 'Build and deployment', set Source = GitHub Actions." -ForegroundColor Gray
+Write-Host "  3. The 'Deploy to GitHub Pages' workflow will run on the next push (or trigger it manually under Actions)." -ForegroundColor Gray
+Write-Host "  4. Once green, your site will be at: https://$ghUser.github.io/$RepoName/" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Tip: to trigger a deploy now, run:  gh workflow run 'Deploy to GitHub Pages'" -ForegroundColor DarkGray

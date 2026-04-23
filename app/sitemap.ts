@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getAllProjects } from "@/lib/projects";
 
+// Required for `output: export` (static site generation, e.g. GitHub Pages).
+export const dynamic = "force-static";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
   const projects = await getAllProjects();
